@@ -38,6 +38,7 @@ The material is extract at subject IC881 - MÉTODOS NUMÉRICOS PARA A SOLUÇÃO 
 - pandas: 3.0.3
 - numpy: 2.4.6
 - matplotlib: 3.10.9
+- time
 - Python 3.12.3
 
 ---
