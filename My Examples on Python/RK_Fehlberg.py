@@ -90,7 +90,7 @@ f = lambda t,y: y - t**2 + 1
 #Analytic ODE: (t + 1)² - 0.5e^t
 exact_y = lambda t: (t+1)**2 - 0.5*np.exp(t)
 
-#Defining values
+#Defining values to a(t0),b(tf), initial condition(w0), max h(hmax) and min h(hmin).
 tf, t0 , w0 , hmax , hmin , tol = 2, 0, 0.5 , 0.25, 0.01, 1e-5
 
 #Calling function
