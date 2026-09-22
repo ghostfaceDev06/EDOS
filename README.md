@@ -26,6 +26,7 @@ The material is extract at subject IC881 - MÉTODOS NUMÉRICOS PARA A SOLUÇÃO 
 - Euler Modified
 - Third Order Runge-Kutta
 - Fourth Order Runge-Kutta
+- Fehlberg Runge-Kutta
 
 ---
 
