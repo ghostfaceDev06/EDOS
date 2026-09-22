@@ -5,21 +5,21 @@ import pandas as pd
 #Fehlberg Runge-Kutta
 def fehlberg(f,t0,tf,w0,tol,hmax,hmin):
 
-    #First pass
+    #First pass : Defining initial values 
     t = t0
     w = w0
     h = hmax
     FLAG = 1
     
-    t_hist = [t0]
-    w_hist = [w0]
-    h_hist = [h]
-    mission = True
+    t_hist = [t0] #where keep t to long algorithm 
+    w_hist = [w0] #where keep w to long algorithm and also numeric solve this ODE
+    h_hist = [h] #where keep h to long algorithm 
+    mission = True #Check this algorithm is Success or Failed.
 
-    #Second pass
+    #Second pass: Looping the algorithm 
     while FLAG == 1:
 
-        #Third pass
+        #Third pass: Calculing operations this method 
         K1 = h*f(t,w)
         K2 = h*f(t + h/4,w + K1/4)
         K3 = h*f(t + 3*h/8,w + 3*K1/32 + 9*K2/32)
@@ -27,66 +27,67 @@ def fehlberg(f,t0,tf,w0,tol,hmax,hmin):
         K5 = h*f(t + h,w + 439*K1/216 - 8*K2 + 3680*K3/513 - 845*K4/4104 )
         K6 = h*f(t + h/2,w - 8*K1/27 + 2*K2 - 3544*K3/2565 + 1859*K4/4104 - 11*K5/40) 
 
-        #Fourth pass
+        #Fourth pass: Calculing R
         R = 1/h * abs(K1/360 -128*K3/4275 - 2197*K4/75240 + K5/50 + 2*K6/55)
 
-        #Fifth pass
+        #Fifth pass: Check if R <= tol pouted 
         if R <= tol:
-            #Sixth pass
+            #Sixth pass: change values of t and w
             t += h
             w += 25*K1/216 + 1408*K3/2565 + 2197*K4/4104 - K5/5
 
-            #Seventh pass
+            #Seventh pass: add elements h, t and w on array
             h_hist.append(h)
             t_hist.append(t)
             w_hist.append(w)
         #End if
 
-        #Eighth pass
+        #Eighth pass: Calculing Delta
         delta = 0.84*(tol/R)**(1/4)
 
-        #Nineth pass
-        if delta < 0.1:
+        #Nineth pass 
+        if delta < 0.1: #if delta < 0.1 , change h
             h = 0.1*h
         #End if
         
-        elif delta >= 4.0:
+        elif delta >= 4.0: #if delta >= 4, change h
             h = 4.0*h
         #End elif
 
-        else:
-            h = delta*h
+        else: #else nothing other options, change h.
+            h = delta*h 
         #End else
 
-        #Tenth pass
+        #Tenth pass: Check if h > hmax, change h
         if h > hmax:
             h = hmax
         #End if
 
         #Eleventh pass
-        if t >= tf:
+        if t >= tf: #if t >= tf , finish algorithm with success 
             FLAG = 0
             mission = True
         #End if
 
-        elif t + h > tf:
+        elif t + h > tf: #if t + h > tf , change h 
             h = tf - t
         #End elif
 
-        elif h < hmin:
+        elif h < hmin: # if h < hmin, so algorithm finish with failed.
             FLAG = 0
             mission = False
             print('h in excess')
         #End elif
     #End while        
 
+    # Return h,t and w utilized to algorithm
     return h_hist,w_hist,t_hist,mission
 #End function
         
-#ODE
+#ODE our problem: y - t² + 1
 f = lambda t,y: y - t**2 + 1
 
-#Analytic ODE
+#Analytic ODE: (t + 1)² - 0.5e^t
 exact_y = lambda t: (t+1)**2 - 0.5*np.exp(t)
 
 #Defining values
