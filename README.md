@@ -27,7 +27,8 @@ The material is extract at subject IC881 - MÉTODOS NUMÉRICOS PARA A SOLUÇÃO 
 - Third Order Runge-Kutta
 - Fourth Order Runge-Kutta
 - Fehlberg Runge-Kutta
-
+- Adam-Bashforth: 2 to 5 pass
+  
 ---
 
 ## Weekly Updates
