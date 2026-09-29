@@ -29,6 +29,7 @@ The material is extract at subject IC881 - MÉTODOS NUMÉRICOS PARA A SOLUÇÃO 
 - Fehlberg Runge-Kutta
 - Adams-Bashforth: 2 to 5 pass
 - Adams-Moulton: 2 to 5 pass
+- Predictor and Corrector Method
   
 ---
 
