@@ -100,7 +100,7 @@ f = lambda t,y : y - t**2 + 1
 #Analytic ODE
 exact_y = lambda t: (t+1)**2 - 0.5*np.exp(t)
 
-#Calculating y1
+#Calculating y1,y2 and y3
 RK_y = fourth(f,t,n,h,y0)
 y1 = RK_y[1]
 y2 = RK_y[2]
