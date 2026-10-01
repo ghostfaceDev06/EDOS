@@ -200,6 +200,9 @@ print(dfc)
 #Output Dataframe Final Value
 print(dff)
 
+#Output Third - Fourth, to show the difference of precision
+print(f'Difference betwen Third and Fourth is :{np.abs(third_values[-1]-fourth_values[-1]):.16e}')
+
 #Comparison graphic mode: Complete
 plt.plot(t,exact_y,'k-',linewidth=3,label='Exact')
 plt.plot(t,euler_values,'bo--',linewidth=1.5,label=' Euler ')
